@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -10,7 +10,7 @@ def home():
     return "Hey, this is the home section."
 @app.route("/contact")
 def contact():
-    return "Hey! This is the contact section of the code!"
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
