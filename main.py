@@ -11,6 +11,9 @@ def home():
 @app.route("/contact")
 def contact():
     return render_template("index.html")
+@app.route("/about")
+def about():
+    return "Hey, This is the return secttion of the code base!"
 
 if __name__ == "__main__":
     app.run(debug=True)
