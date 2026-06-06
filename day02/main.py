@@ -1,19 +1,12 @@
 from flask import Flask, render_template
 
-app = Flask(__name__, static_folder='assets',)
+app = Flask(__name__)
+@app.route('/')
+def index():
+    return render_template('form.html')
 
-@app.route("/")
-def display():
-    return "I am checking wheather i can run this main.py app in the local host or not"
-@app.route("/home")
-def home():
-    return "Hey, this is the home section."
-@app.route("/about")
-def about():
-    return "Hey this is the about section of the code base!"
-@app.route("/form")
-def form():
-    return render_template("index.html")
+@app.route('/predit', methods=['POST'])
+def predict():
+    value = request.form['feature1']
+    return f"received input:{value}"
 
-if __name__ == "__main__":
-    app.run(debug=True)
