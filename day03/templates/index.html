@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jinja2</title>
+</head>
+<body>
+    <p>Hey, This is day 3 and i am learning Jinja2</p>
+    <p>My name is {{name}}. And Today is my day 3 of learning flask.</p>
+    <p>My primary language is {{language}}</p>
+    {% for item in itemstored %}
+     <p>{{item}}</p>
+    {% endfor %}  
+    <!-- we need to write the safe to remove the HTML injection from the main.py code base. -->
+    {{footer| safe}}
+    
+</body>
+</html>
