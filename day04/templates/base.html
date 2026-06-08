@@ -1,15 +1,30 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>{% block title %}My App{% endblock %}</title>
+  <title>{% block title %}{% endblock %}</title>
 </head>
+
 <body>
   <header>
     <h1>My Flask App</h1>
   </header>
+  <nav>
+    This is my nav bar.
+  </nav>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+            {% for msg in messages %}
+                <li>{{ msg }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
 
   <main>
     {% block content %}{% endblock %}
   </main>
 </body>
+
 </html>
