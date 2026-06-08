@@ -44,7 +44,7 @@ render_template -> to pass variables form flask to HTML
 Overall, Jinja makes it easy to combine logic and layout for dynamic pages.
 
 
-## Day 03
+## Day 04
 
 Temlpate inheritance is basically the base template that other templates can extend.
 
@@ -52,8 +52,12 @@ Message flashing in Flask
 Flashing is a way to send temporary messages from backend to the frontend.
  
  These messages we generally use for:
+
+
  *Status updates
+ <br>
  *Error messages
+ <br>
  *Notification 
  
 
