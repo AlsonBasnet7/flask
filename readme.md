@@ -42,3 +42,8 @@ render_template -> to pass variables form flask to HTML
 {%....%} -> to control structures like loops and conditions  
 
 Overall, Jinja makes it easy to combine logic and layout for dynamic pages.
+
+
+## Day 03
+
+Temlpate inheritance is basically the base template that other templates can extend.
