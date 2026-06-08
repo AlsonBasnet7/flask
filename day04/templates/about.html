@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About section</title>
+</head>
+<body>
+    This is the about section of the code. 
+    We will be using render_templates to call this from the main.py file.
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+            {% for msg in messages %}
+                <li>{{ msg }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+    
+</body>
+</html>
