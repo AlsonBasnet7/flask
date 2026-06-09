@@ -61,3 +61,8 @@ Flashing is a way to send temporary messages from backend to the frontend.
  *Notification 
  
 
+## Day 04
+
+Guery parameters
+Query parameters are passed using ?key=value in the URL
+
