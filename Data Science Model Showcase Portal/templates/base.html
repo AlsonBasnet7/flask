@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Student Dashboard{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <span>🎓</span> StudentPredict
+  </div>
+  <a href="/" {% if request.path == '/' %}class="active"{% endif %}>Home</a>
+  <a href="/students" {% if '/students' in request.path %}class="active"{% endif %}>Students</a>
+  <a href="/add-student" {% if request.path == '/add-student' %}class="active"{% endif %}>Add Student</a>
+  {% if session.get('logged_in') %}
+    <a href="/logout">Logout</a>
+  {% else %}
+    <a href="/login" {% if request.path == '/login' %}class="active"{% endif %}>Login</a>
+  {% endif %}
+</nav>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flashes">
+      {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+{% block content %}{% endblock %}
+
+</body>
+</html>

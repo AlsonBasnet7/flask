@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Students — Student Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <div class="page-header">
+    <div class="page-title">
+      Students
+      {% if search_grade %}
+        <span style="font-size:14px; font-weight:400; color:var(--muted); margin-left:8px;">— Grade {{ search_grade }} filter</span>
+      {% endif %}
+    </div>
+    <a href="/add-student" class="btn btn-primary">+ Add student</a>
+  </div>
+
+  <div class="search-row">
+    <a href="/students" {% if not search_grade %}class="active"{% endif %}>All</a>
+    <a href="/search?grade=A" {% if search_grade == 'A' %}class="active"{% endif %}>Grade A — Excellent</a>
+    <a href="/search?grade=B" {% if search_grade == 'B' %}class="active"{% endif %}>Grade B — Good</a>
+    <a href="/search?grade=C" {% if search_grade == 'C' %}class="active"{% endif %}>Grade C — Needs Improvement</a>
+  </div>
+
+  {% if students %}
+    <div class="student-list">
+      {% for student in students %}
+        {% set initials = student.name.split()|map('first')|list|join('')|upper %}
+        <div class="student-row">
+          <div class="avatar">{{ initials[:2] }}</div>
+          <div>
+            <div class="student-name">{{ student.name }}</div>
+            <div class="student-meta">ID #{{ student.id }}</div>
+          </div>
+          {% if student.prediction == 'Excellent' %}
+            <span class="badge badge-excellent">Excellent</span>
+          {% elif student.prediction == 'Good' %}
+            <span class="badge badge-good">Good</span>
+          {% else %}
+            <span class="badge badge-needs">Needs Improvement</span>
+          {% endif %}
+          <div class="student-marks">{{ student.marks }}<span>/ 100</span></div>
+          <a href="/student/{{ student.id }}" class="btn" style="margin-left:4px; padding:7px 14px; font-size:13px;">View →</a>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty">
+      <h3>No students found</h3>
+      <p>Try a different filter, or <a href="/add-student">add a student</a>.</p>
+    </div>
+  {% endif %}
+
+</div>
+{% endblock %}

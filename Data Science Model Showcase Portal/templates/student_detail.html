@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}{{ student.name }} — Student Dashboard{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 600px;">
+  <a href="/students" style="font-size:13px; color:var(--muted); display:inline-flex; align-items:center; gap:4px; margin-bottom:1.5rem;">← Back to students</a>
+
+  <div class="card">
+    <div class="detail-header">
+      {% set initials = student.name.split()|map('first')|list|join('')|upper %}
+      <div class="avatar-lg">{{ initials[:2] }}</div>
+      <div>
+        <h2 style="font-size:20px; font-weight:700; margin-bottom:4px;">{{ student.name }}</h2>
+        <p style="color:var(--muted); font-size:13px;">Student ID #{{ student.id }}</p>
+      </div>
+      <div style="margin-left:auto;">
+        {% if student.prediction == 'Excellent' %}
+          <span class="badge badge-excellent" style="font-size:13px; padding:5px 14px;">Excellent</span>
+        {% elif student.prediction == 'Good' %}
+          <span class="badge badge-good" style="font-size:13px; padding:5px 14px;">Good</span>
+        {% else %}
+          <span class="badge badge-needs" style="font-size:13px; padding:5px 14px;">Needs Improvement</span>
+        {% endif %}
+      </div>
+    </div>
+
+    <div style="border-top:1px solid var(--border); padding-top:1.25rem;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:8px;">
+        <span style="font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; font-weight:500;">Marks</span>
+        <span style="font-size:32px; font-weight:800; color:var(--text);">{{ student.marks }}<span style="font-size:16px; font-weight:400; color:var(--muted);">/100</span></span>
+      </div>
+
+      <div class="marks-bar-track">
+        {% if student.marks >= 80 %}
+          <div class="marks-bar-fill" style="width:{{ student.marks }}%; background:#22c55e;"></div>
+        {% elif student.marks >= 60 %}
+          <div class="marks-bar-fill" style="width:{{ student.marks }}%; background:#3b82f6;"></div>
+        {% else %}
+          <div class="marks-bar-fill" style="width:{{ student.marks }}%; background:#f97316;"></div>
+        {% endif %}
+      </div>
+
+      <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--muted); margin-top:4px;">
+        <span>0</span><span>50</span><span>100</span>
+      </div>
+    </div>
+
+    <div style="margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid var(--border); display:flex; gap:10px;">
+      <a href="/students" class="btn">← All students</a>
+      <a href="/add-student" class="btn">Add another</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

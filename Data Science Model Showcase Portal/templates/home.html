@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Home — Student Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="hero">
+    <h1>Student Performance<br>Predictor</h1>
+    <p>Track marks, predict outcomes, and monitor every student's progress in one place.</p>
+    <div class="hero-actions">
+      <a href="/students" class="btn btn-primary">View students</a>
+      <a href="/add-student" class="btn">Add student</a>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-val">{{ total }}</div>
+      <div class="stat-label">Total students</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">/search?grade=A</div>
+      <div class="stat-label">Grade A — Excellent (≥ 80)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">/search?grade=B</div>
+      <div class="stat-label">Grade B — Good (60–79)</div>
+    </div>
+  </div>
+</div>
+{% endblock %}

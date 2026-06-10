@@ -1,21 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="/static/login.css"
-</head>
-<body>
-     <div class="container">
-        <h2> Login</h2>
-         <form action="/login" method="POST">
-           <input type=" email" name="email" placeholder="Enter your Email" required>
-           <br>
-           <input type=" password" name="password" placeholder="Enter your password" required>  
-           <br>
-           <input type="submit" value="submit">
-         </form>
-     </div>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Login — Student Dashboard{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 420px;">
+  <div style="margin-top: 2rem;">
+    <h2 style="font-size: 22px; font-weight: 700; margin-bottom: 0.4rem;">Sign in</h2>
+    <p style="color: var(--muted); font-size: 14px; margin-bottom: 2rem;">Use <strong style="color:var(--text)">admin</strong> / <strong style="color:var(--text)">1234</strong> to log in.</p>
+
+    <div class="card">
+      <form method="POST">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" placeholder="admin" autocomplete="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" placeholder="••••••••" autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:0.5rem;">Sign in</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
